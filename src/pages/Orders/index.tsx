@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
@@ -13,14 +13,7 @@ import { actionsOrders } from '../../store/orders/actions'
 import { Cart } from './components/Cart'
 
 export const Orders = () => {
-  const dispatch = useDispatch()
-  const cart = useSelector((state: RootState) => state.orders.cart)
-
-  const onSendToConfirm = () => {
-    if (cart.length >= 1) {
-      dispatch(actionsOrders.confirmOrder())
-    }
-  }
+  const orders = useSelector((state: RootState) => state.orders.orders)
 
   return (
     <Grid container justify='center' spacing={3}>
@@ -40,6 +33,34 @@ export const Orders = () => {
           <Box textAlign='center'>
             <Typography variant='h4'>Orders</Typography>
           </Box>
+        </Grid>
+        <Grid container item xs={12} spacing={4}>
+          {orders.map((item) => (
+            <Grid item xs={12} sm={6} key={item.id}>
+              <Paper elevation={14}>
+                <Box ml={2} py={1}>
+                  <Grid container>
+                    <Grid item xs={6} sm={3}>
+                      <Typography variant='h5'>Order:</Typography>
+                    </Grid>
+                    <Grid item xs={6} sm={9}>
+                      <Typography variant='h6'>{item.order.join(', ')}</Typography>
+                    </Grid>
+                  </Grid>
+                  <Grid container>
+                    <Grid item xs={6} sm={4}>
+                      <Typography variant='h5'>Created:</Typography>
+                    </Grid>
+                    <Grid item xs={6} sm={8}>
+                      <Typography variant='h6'>
+                        {new Intl.DateTimeFormat('ua-UA').format(new Date(item.created))}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Paper>
+            </Grid>
+          ))}
         </Grid>
       </Grid>
     </Grid>
