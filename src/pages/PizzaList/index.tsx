@@ -31,7 +31,6 @@ export const PizzaList = () => {
     (state: RootState) => state.pizza.data
   )
   const keysPizzas = Object.keys(pizzas)
-  console.log(keysPizzas.map((el) => pizzas[el]))
 
   return (
     <Grid container justify='center' spacing={3} className={classes.wrapper}>
@@ -61,7 +60,7 @@ export const PizzaList = () => {
             </CardContent>
             <CardActions>
               <Button color='primary' size='small'>
-                Order
+                add to cart
               </Button>
             </CardActions>
           </Card>
