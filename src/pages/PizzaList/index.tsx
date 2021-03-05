@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 import { RootState } from '../../store/rootReducer'
 
@@ -14,6 +15,7 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import { Box } from '@material-ui/core'
+import { actionsOrders } from '../../store/orders/actions'
 
 const useStyles = makeStyles({
   root: {
@@ -27,10 +29,17 @@ const useStyles = makeStyles({
 
 export const PizzaList = () => {
   const classes = useStyles()
+  const dispatch = useDispatch()
+  const history = useHistory()
   const pizzas: { [index: string]: any } = useSelector(
     (state: RootState) => state.pizza.data
   )
   const keysPizzas = Object.keys(pizzas)
+
+  const onSendCart = (pizza: string) => {
+    dispatch(actionsOrders.addToCart(pizza))
+    history.push('/orders')
+  }
 
   return (
     <Grid container justify='center' spacing={3} className={classes.wrapper}>
@@ -59,7 +68,7 @@ export const PizzaList = () => {
               <Divider />
             </CardContent>
             <CardActions>
-              <Button color='primary' size='small'>
+              <Button color='primary' size='small' onClick={() => onSendCart(el)}>
                 add to cart
               </Button>
             </CardActions>
