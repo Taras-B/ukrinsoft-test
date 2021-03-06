@@ -8,7 +8,7 @@
 - Orders;
 - Statistics;
 
-### Follow the [Link](http://taras-b.github.io/ukrinsoft-test) to a hosted website
+### Follow the [Link](http://taras-b.github.io/ukrinsoft-test/) to a hosted website
 
 ## **Usage**:
 
