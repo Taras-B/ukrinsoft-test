@@ -9,7 +9,7 @@ import { store } from './store'
 import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename='ukrinsoft-test'>
     <Provider store={store}>
       <CssBaseline />
       <App />
