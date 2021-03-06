@@ -6,7 +6,7 @@ export enum EnumActionType {
   CONFIRM_TO_ORDERS = 'orders/SET_CONFIRM_TO_ORDERS',
 }
 
-interface IOrder {
+export interface IOrder {
   id: string
   created: Date
   order: string[]
