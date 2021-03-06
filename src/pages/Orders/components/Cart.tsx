@@ -32,8 +32,8 @@ export const Cart = () => {
   return (
     <>
       <Grid container item spacing={3}>
-        {cart.map((item) => (
-          <Grid item xs={12} sm={6} key={item}>
+        {cart.map((item, index) => (
+          <Grid item xs={12} sm={6} key={`${item}${index}`}>
             <Paper elevation={14}>
               <Box textAlign='center' py={1}>
                 <Typography variant='body1'>{item}</Typography>
