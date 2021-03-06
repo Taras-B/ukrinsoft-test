@@ -4,9 +4,9 @@
 
 ### App have 3 tabs in the navigation panel:
 
-- Home;
-- Orders;
-- Statistics;
+- [Home](http://taras-b.github.io/ukrinsoft-test/);
+- [Orders](http://taras-b.github.io/ukrinsoft-test/orders);
+- [Statistics](http://taras-b.github.io/ukrinsoft-test/statistics);
 
 ### Follow the [Link](http://taras-b.github.io/ukrinsoft-test/) to a hosted website
 
