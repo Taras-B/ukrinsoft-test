@@ -1,7 +1,6 @@
-import { Action, applyMiddleware, compose, createStore } from 'redux'
-import thunk, { ThunkAction } from 'redux-thunk'
+import { compose, createStore } from 'redux'
 
-import { rootReducer, RootState } from './rootReducer'
+import { rootReducer } from './rootReducer'
 
 declare global {
   interface Window {
@@ -10,7 +9,4 @@ declare global {
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
-
-export type AppDispatch = typeof store.dispatch
-export type AppThunk = ThunkAction<void, RootState, null, Action<string>>
+export const store = createStore(rootReducer, composeEnhancers())

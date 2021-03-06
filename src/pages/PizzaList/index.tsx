@@ -3,8 +3,6 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-import { RootState } from '../../store/rootReducer'
-
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -15,7 +13,9 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import { Box } from '@material-ui/core'
+
 import { actionsOrders } from '../../store/orders/actions'
+import { pizzaList } from '../../store/orders/selector'
 
 const useStyles = makeStyles({
   root: {
@@ -31,9 +31,7 @@ export const PizzaList = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const history = useHistory()
-  const pizzas: { [index: string]: any } = useSelector(
-    (state: RootState) => state.pizza.data
-  )
+  const pizzas: { [index: string]: any } = useSelector(pizzaList)
   const keysPizzas = Object.keys(pizzas)
 
   const onSendCart = (pizza: string) => {

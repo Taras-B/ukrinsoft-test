@@ -6,13 +6,12 @@ import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import { Box } from '@material-ui/core'
 
-import { RootState } from '../../store/rootReducer'
-
 import { Cart } from './components/Cart'
 import { OrderItem } from './components/OrderItem'
+import { ordersList } from '../../store/orders/selector'
 
 export const Orders = () => {
-  const orders = useSelector((state: RootState) => state.orders.orders)
+  const orders = useSelector(ordersList)
 
   return (
     <Grid container justify='center' spacing={3}>

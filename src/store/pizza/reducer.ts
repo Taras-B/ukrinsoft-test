@@ -1,5 +1,3 @@
-const GET_DATE = 'APP/DATE/GET_DATE'
-
 const initialState = {
   data: {
     cap: {
@@ -58,8 +56,6 @@ export type PizzaStateType = typeof initialState
 
 export const pizzaReducer = (state = initialState, action: any): PizzaStateType => {
   switch (action.type) {
-    case GET_DATE:
-      return { ...state, ...action.payload }
     default:
       return state
   }

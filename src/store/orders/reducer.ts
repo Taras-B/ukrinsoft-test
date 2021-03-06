@@ -4,7 +4,7 @@ const initialState: IOrdersState = {
   cart: [],
   orders: [],
 }
-// TODO: ADD error alert
+
 export const ordersReducer = (
   state = initialState,
   action: OrdersActionT

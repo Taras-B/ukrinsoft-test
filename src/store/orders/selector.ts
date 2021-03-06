@@ -1,20 +1,20 @@
 import { createSelector } from 'reselect'
 import { RootState } from '../rootReducer'
 
-export const orders = (state: RootState) => state.orders.orders
+export const ordersList = (state: RootState) => state.orders.orders
 export const pizzaList = (state: RootState) => state.pizza.data
 
-export const getInfoPizza = createSelector(orders, pizzaList, (order, listP) => {
+export const getInfoPizza = createSelector(ordersList, pizzaList, (order, listP) => {
   const orderedPizza = order.map((el) => [...el.order]).flat()
 
   const allIngredients: string[] = []
 
-  const reducer = function (acc: any, el: any) {
+  const reducerCallback = (acc: any, el: any) => {
     acc[el] = (acc[el] || 0) + 1
     return acc
   }
 
-  const pizzas = orderedPizza.reduce(reducer, {})
+  const pizzas = orderedPizza.reduce(reducerCallback, {})
 
   const popular = Object.keys(pizzas).sort((a, b) => {
     return pizzas[b] - pizzas[a]
@@ -31,7 +31,7 @@ export const getInfoPizza = createSelector(orders, pizzaList, (order, listP) => 
     }
   })
 
-  const pizzasIngredients = allIngredients.reduce(reducer, {})
+  const pizzasIngredients = allIngredients.reduce(reducerCallback, {})
 
   const ingredients = Object.keys(pizzasIngredients).sort((a, b) => {
     return pizzasIngredients[b] - pizzasIngredients[a]
